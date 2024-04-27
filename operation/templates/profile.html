@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 300px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: block; /* Changed to block */
+            width: 100%;
+            background-color: #007bff;
+            color: #fff;
+            text-align: center; /* Added */
+            box-sizing: border-box; /* Added */
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .logout-button {
+            background-color: #dc3545;
+        }
+        .logout-button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>User Profile</h2>
+        <p>Welcome, {{ username }}!</p>
+        <p>email: {{ email }}</p>
+        <div class="button-container">
+           
+                {% csrf_token %}
+                <a class="button" href="{% url 'login' %}">Login to Another Account</a>
+                <a class="button" href="{% url 'register' %}">Create Another Account</a>
+                <a href="{% url 'logout' %}" method="post" class="button logout-button" >Logout</a>
+
+        </div>
+    </div>
+</body>
+</html>
